@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/blog/([^/]*)", "destination": "/src/pages/blog/[...slug].astro" }
+  ],
+  "functions": true
+}
