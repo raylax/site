@@ -3,20 +3,17 @@ import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-
+import config from "./astro.config.mjs";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  ...config,
   compressHTML: true,
-  markdown: {
-    syntaxHighlight: "shiki"
-  },
-  integrations: [mdx(), sitemap(), tailwind(), react()],
   adapter: vercel(),
   output: "hybrid",
   experimental: {
+    ...config.experimental,
     hybridOutput: true,
   },
 });

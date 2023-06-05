@@ -9,7 +9,11 @@ import react from "@astrojs/react";
 export default defineConfig({
   site: "https://example.com",
   markdown: {
+    gfm: false,
     syntaxHighlight: "shiki",
+    shikiConfig: {
+      theme: "nord",
+    },
   },
   integrations: [mdx(), sitemap(), tailwind(), react()],
 });

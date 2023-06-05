@@ -1,0 +1,14 @@
+pre code {
+  counter-reset: line;
+  counter-increment: line 0;
+}
+
+pre code .line::before {
+  content: counter(line);
+  counter-increment: line;
+  width: 1rem;
+  margin-right: 1.5rem;
+  display: inline-block;
+  text-align: right;
+  color: rgba(115,138,148,.4)
+}
