@@ -1,8 +1,5 @@
 {
   "framework": "astro",
   "installCommand": "npm install",
-  "buildCommand": "yarn build:vercel",
-  "rewrites": [
-    { "source": "/blog/([^/]*)", "destination": "/src/pages/blog/[...slug].astro" }
-  ]
+  "buildCommand": "yarn build:vercel"
 }

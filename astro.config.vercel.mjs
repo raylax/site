@@ -14,7 +14,9 @@ export default defineConfig({
     syntaxHighlight: "shiki"
   },
   integrations: [mdx(), sitemap(), tailwind(), react()],
-  output: "server",
   adapter: vercel(),
-
+  output: "hybrid",
+  experimental: {
+    hybridOutput: true,
+  },
 });
