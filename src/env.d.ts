@@ -1,12 +1,10 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
-
-
 interface ImportMetaEnv {
-  readonly DEPLOY: string;
+  readonly DEPLOY: string
 }
 
 interface ImportMeta {
-  readonly env: ImportMetaEnv;
+  readonly env: ImportMetaEnv
 }

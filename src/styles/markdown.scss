@@ -1,14 +1,120 @@
-pre code {
-  counter-reset: line;
-  counter-increment: line 0;
+
+body {
+  font-family: Verdana, sans-serif;
+  margin: 0 auto !important;
+  padding: 20px;
+  max-width: 65ch;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  line-height: 1.5;
 }
 
-pre code .line::before {
-  content: counter(line);
-  counter-increment: line;
-  width: 1rem;
-  margin-right: 1.5rem;
-  display: inline-block;
-  text-align: right;
-  color: rgba(115,138,148,.4)
+pre {
+  opacity: 0.98;
+  background: rgba(200, 200, 255, 0.05);
+  @apply py-2 rounded;
+  & > code {
+    @apply grid;
+    counter-reset: line;
+    @apply text-sm leading-7;
+    & > .line {
+      @apply px-2;
+      border-left: 3px solid transparent;
+      &::before {
+        counter-increment: line;
+        content: counter(line);
+        @apply inline-block ml-1 mr-2 text-right text-slate-600;
+      }
+      &.line--highlighted {
+        background: rgba(200, 200, 255, 0.1);
+        @apply border-blue-400;
+        &::before {
+          @apply text-slate-400;
+        }
+      }
+    }
+    &[data-line-numbers-max-digits='2'] > .line::before {
+      @apply w-4;
+    }
+    &[data-line-numbers-max-digits='3'] > .line::before {
+      @apply w-6;
+    }
+    &[data-line-numbers-max-digits='4'] > .line::before {
+      @apply w-9;
+    }
+    &[data-line-numbers-max-digits='5'] > .line::before {
+      @apply w-12;
+    }
+  }
+
+  .word {
+    @apply bg-zinc-600/50 rounded-sm;
+    box-shadow: 0 0 0 4px rgb(82 82 91 / 0.5);
+  }
+
+  [data-word-id] {
+    @apply shadow-none px-1;
+  }
+
+  [data-word-id='v'] {
+    @apply text-pink-300 bg-rose-800/50;
+  }
+
+  [data-word-id='s'] {
+    @apply text-teal-300 bg-teal-800/50;
+  }
+
+  [data-word-id='i'] {
+    @apply text-blue-200 bg-blue-800/50;
+  }
+}
+
+*:target {
+  @apply bg-orange-100;
+  animation-delay: 2s;
+  animation-fill-mode: forwards;
+  animation-duration: 1000ms;
+  animation-name: target;
+  animation-timing-function: ease-out;
+}
+
+@keyframes target {
+  from {
+    @apply bg-orange-100;
+  }
+  to {
+    @apply bg-inherit;
+  }
+}
+
+cite {
+  [data-footnote-ref] {
+    @apply text-blue-500 px-1;
+  }
+}
+
+.footnotes {
+  @apply border-t border-gray-700 mt-2;
+  #footnote-label {
+    @apply hidden;
+  }
+  ol {
+    @apply list-none;
+    counter-reset: footnote;
+    li {
+      counter-increment: footnote;
+      @apply text-xs text-gray-600 mt-1;
+      a:not(.data-footnote-backref):link {
+        @apply text-blue-500 underline;
+      }
+      p:before {
+        content: counter(footnote) '.';
+        @apply inline-block mr-1;
+      }
+      .data-footnote-backref {
+        @apply text-blue-500 font-bold;
+      }
+    }
+  }
 }
