@@ -41,7 +41,7 @@ const prettyCodeOptions = {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://example.com",
+  site: "https://inurl.org",
   markdown: {
     syntaxHighlight: false,
     rehypePlugins: [
