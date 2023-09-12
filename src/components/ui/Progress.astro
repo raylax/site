@@ -1,15 +1,18 @@
 ---
-
-import { cn } from "@/utils/ss"
+import { cn } from '@/utils/ss'
 import type { HTMLAttributes } from 'astro/types'
 
 type Props = {
-    value: number
+  value: number
 } & HTMLAttributes<'div'>
 
-const {value, class: className, ...props} = Astro.props
+const { value, class: className, ...props } = Astro.props
 ---
 
-<div class={cn("relative h-4 w-full overflow-hidden rounded-full bg-foreground/5", className)} {...props}>
-    <div class="h-full w-full flex-1 bg-foreground/90 transition-all" style={{ transform: `translateX(-${100 - (value || 0)}%)` }}></div>
+<div class={cn('relative h-4 w-full overflow-hidden rounded-full bg-foreground/5', className)} {...props}>
+  <div
+    class="h-full w-full flex-1 bg-foreground/90 transition-all"
+    style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
+  >
+  </div>
 </div>

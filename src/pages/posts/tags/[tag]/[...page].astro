@@ -19,19 +19,19 @@ export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
       tags[tag].push(post)
     }
   }
-  return Object.entries(tags).flatMap(([tag, posts]) => paginate(posts, {
-    params: { tag },
-    props: { tag },
-    pageSize: PAGE_SIZE,
-  }))
+  return Object.entries(tags).flatMap(([tag, posts]) =>
+    paginate(posts, {
+      params: { tag },
+      props: { tag },
+      pageSize: PAGE_SIZE
+    })
+  )
 }
-
 
 type Props = {
   page: Page<CollectionEntry<'post'>>
   tag: string
 }
-
 
 const { page, tag } = Astro.props
 ---
@@ -41,7 +41,7 @@ const { page, tag } = Astro.props
     <Tag className="inline-block mr-2" size={24} />
     {tag}
   </h1>
-  
+
   <div class="pb-2 lg:pb-6">
     <PostList posts={page.data} />
     <Pagination page={page} />

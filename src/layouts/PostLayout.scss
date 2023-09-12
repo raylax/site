@@ -1,33 +1,32 @@
 .astro-code {
-    @apply p-4 rounded-sm overflow-hidden font-mono;
+  @apply overflow-hidden rounded-sm p-4 font-mono;
 }
 
-
 .data-footnote-backref {
-    @apply font-mono;
+  @apply font-mono;
 }
 
 .footnotes {
-    @apply border-t;
-    ol {
-        @apply pl-6;
-        & > li {
-            @apply text-xs md:text-sm lg:text-base mt-2 mb-0;
-            & > p {
-                @apply my-0;
-            }
-        }
+  @apply border-t;
+  ol {
+    @apply pl-6;
+    & > li {
+      @apply mb-0 mt-2 text-xs md:text-sm lg:text-base;
+      & > p {
+        @apply my-0;
+      }
     }
+  }
 }
 
 .sr-only {
-    position: absolute;
-width: 1px;
-height: 1px;
-padding: 0;
-margin: -1px;
-overflow: hidden;
-clip: rect(0, 0, 0, 0);
-white-space: nowrap;
-border-width: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
