@@ -11,6 +11,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: 'https://inurl.org',
   integrations: [sitemap(), tailwind(), react(), mdx()],
+  compressHTML: true,
   markdown: {
     remarkPlugins: [remarkToc],
     shikiConfig: {
