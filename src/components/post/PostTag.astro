@@ -1,0 +1,9 @@
+---
+import Badge from '@/components/ui/Badge.astro'
+import { Tag } from 'lucide-react'
+---
+
+<Badge variant="outline" class="hover:underline hover:cursor-pointer">
+  <Tag size={12} className="mr-1" />
+  <slot />
+</Badge>

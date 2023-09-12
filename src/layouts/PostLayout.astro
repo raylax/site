@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content'
+import FormattedDate from '@/components/FormattedDate.astro'
+import MainLayout from '@/layouts/MainLayout.astro'
+import PostTag from '@/components/post/PostTag.astro'
+import '@/layouts/PostLayout.scss'
+
+type Props = CollectionEntry<'post'>['data']
+
+const { title, description, publishedDate, updatedDate, heroImage, tags } = Astro.props
+---
+
+<MainLayout title={title} description={description} image={heroImage}>
+  <div class="pt-4 lg:pt-8">
+    <div class="max-w-5xl mx-auto px-2 lg:px-0">
+      <div>
+        {
+          tags && (
+            <div class="mb-2 flex gap-2">
+              {tags.map((tag) => (
+                <PostTag>
+                  <a href={`/posts/tags/${tag}`}>{tag}</a>
+                </PostTag>
+              ))}
+            </div>
+          )
+        }
+        <h1 class="text-6xl font-bold text-foreground/90 mb-4">{title}</h1>
+        <div class="flex justify-between items-center mb-2 text-foreground/90 text-sm">
+          <div><FormattedDate date={publishedDate} /> 发布</div>
+          {
+            updatedDate && (
+              <div>
+                最后更新于 <FormattedDate date={updatedDate} />
+              </div>
+            )
+          }
+        </div>
+        <hr />
+      </div>
+      <article class="pt-4 prose md:prose-lg lg:prose-xl max-w-none">
+        <slot />
+      </article>
+    </div>
+  </div>
+</MainLayout>
+

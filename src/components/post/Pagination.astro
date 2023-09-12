@@ -1,0 +1,41 @@
+---
+import type { Page } from 'astro'
+import Button from '@/components/ui/Button.astro'
+
+type Props = {
+  page: Page<any>
+}
+
+const { page } = Astro.props
+
+const maxPagesToShow = 10
+const halfMaxPagesToShow = Math.floor(maxPagesToShow / 2)
+let startPage = Math.max(page.currentPage - halfMaxPagesToShow, 1)
+let endPage = Math.min(startPage + maxPagesToShow - 1, page.lastPage)
+
+if (endPage - startPage + 1 < maxPagesToShow) {
+  startPage = Math.max(endPage - maxPagesToShow + 1, 1)
+}
+
+const pages = Array.from({ length: endPage - startPage + 1 }, (_, i) => startPage + i)
+---
+
+{page.lastPage > 1 && (
+  <div class="flex justify-center items-center gap-2 lg:gap-3">
+  <!-- {page.currentPage > 1 && <Button variant="outline" href={page.url.prev}>上一页</Button>} -->
+  {
+    pages.map((p) =>
+      p === page.currentPage ? (
+        <Button size="sm" class="w-10" variant="ghost">
+          {p}
+        </Button>
+      ) : (
+        <Button size="sm" class="w-10" variant="outline" href={p == 1 ? '/posts' : `/posts/${p}`}>
+          {p}
+        </Button>
+      )
+    )
+  }
+  <!-- {page.currentPage < page.lastPage && } -->
+</div>
+)}

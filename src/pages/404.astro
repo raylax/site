@@ -1,0 +1,19 @@
+---
+import Button from "@/components/ui/Button.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { AlertTriangle } from "lucide-react";
+
+---
+
+<MainLayout>
+    <div class="flex flex-1 justify-center items-center flex-col gap-4">
+        <div class="flex items-end gap-6 text-foreground/80">
+            <AlertTriangle size={100} />
+            <span class="text-8xl">404</span>
+        </div>
+        <p class="text-foreground/90">您访问的页面不存在，请检查输入地址</p>
+        <div>
+            <Button href="/">去首页</Button>
+        </div>
+    </div>
+</MainLayout>

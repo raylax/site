@@ -1,0 +1,30 @@
+---
+import { cva, type VariantProps } from 'class-variance-authority'
+import type { HTMLAttributes } from 'astro/types'
+
+import { cn } from '@/utils/cs'
+
+const badgeVariants = cva(
+  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-sm font-semibold transition-colors',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent bg-foreground text-background',
+        secondary: 'border-foreground text-foreground',
+        outline: 'border-transparent text-foreground/80 px-0 hover:text-foreground/90'
+      }
+    },
+    defaultVariants: {
+      variant: 'default'
+    }
+  }
+)
+
+type Props = VariantProps<typeof badgeVariants> & HTMLAttributes<'div'>
+
+const { class: className, variant, ...props } = Astro.props
+---
+
+<div class={cn(badgeVariants({ variant }), className)} {...props}>
+  <slot />
+</div>

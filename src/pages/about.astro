@@ -1,0 +1,91 @@
+---
+import Card from '@/components/ui/Card.astro';
+import Progress from '@/components/ui/Progress.astro';
+import MainLayout from '@/layouts/MainLayout.astro'
+
+const since = new Date('2015-01-01')
+const years = new Date().getFullYear() - since.getFullYear()
+
+const stacks = [
+  {
+    name: "后端",
+    items: [
+      { name: "Java", value: 100},
+      { name: "Kotlin", value: 90,},
+      { name: "Python", value: 90,},
+      { name: "Go", value: 90,},
+      { name: "Node.js", value: 80,},
+      { name: "Scala", value: 80,},
+      { name: "Rust/C/C++", value: 50,},
+    ],
+  },
+  {
+    name: "前端",
+    items: [
+      { name: 'HTML', value: 100 },
+      { name: 'CSS', value: 100 },
+      { name: 'Javascript', value: 100 },
+      { name: 'Typescript', value: 90 },
+      { name: 'Vue/React/Angular', value: 90 }
+    ],
+  },
+  {
+    name: "代码安全审计",
+    items: [
+      { name: "Java", value: 100},
+      { name: "Python", value: 90,},
+      { name: "Go", value: 90,},
+      { name: "Node.js", value: 80,},
+      { name: "PHP", value: 80, }
+    ],
+  },
+  {
+    name: "其他",
+    items: [
+      { name: "Linux", value: 100,},
+      { name: "Git", value: 100,},
+      { name: "Kubernetes/Docker", value: 90,},
+      { name: "CI/CD", value: 90,},
+      { name: "DevOps", value: 80,}
+    ],
+  },
+]
+
+---
+
+<MainLayout title="关于">
+  <div class="flex-1 py-4 lg:py-8">
+    <div class="max-w-6xl mx-auto px-2 lg:px-0">
+      
+      <div>
+        <p class="text-foreground/50">全栈开发 & 代码安全审计</p>
+        <p class="text-foreground/90 py-2 font-bold text-6xl tracking-wide uppercase">RAYLAX</p>
+        <p class="text-foreground/80 pt-4 ">
+          {years}年全栈开发经验的专业开发者，擅长于前端和后端技术的设计、开发和部署。<br/>
+          拥有丰富的开发经验，熟悉多种编程语言和框架、数据库和缓存技术、开发工具和技术。<br/>
+          有产品全生命周期的开发经验，熟悉敏捷开发流程。<br/>
+          同时拥有多年的代码安全审计经验，熟悉多种编程语言的安全漏洞，拥有黑盒审计能力，能够快速定位和修复代码中的安全漏洞。
+        </p>
+      </div>
+
+
+      <hr class="my-10" />
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {stacks.map((stack) => (
+          <div>
+          <p class="text-foreground/80 font-bold text-lg mb-2 px-1">{stack.name}</p>
+          <Card class="p-6 font-mono pb-8 space-y-2">
+            {stack.items.map((item) => (
+              <div class="space-y-1">
+                <p>{item.name}</p>
+                <Progress class="h-2" value={item.value} />
+              </div>
+            ))}
+          </Card></div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</MainLayout>

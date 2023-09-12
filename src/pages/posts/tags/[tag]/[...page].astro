@@ -1,0 +1,49 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content'
+import MainLayout from '@/layouts/MainLayout.astro'
+import PostList from '@/components/post/PostList.astro'
+import { PAGE_SIZE } from '@/consts'
+import { Tag } from 'lucide-react'
+import { getPosts } from '@/pages/posts/utils'
+import type { GetStaticPaths, Page } from 'astro'
+import Pagination from '@/components/post/Pagination.astro'
+
+type Post = CollectionEntry<'post'>
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const posts = await getPosts()
+  const tags: Record<string, Post[]> = {}
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      if (!tags[tag]) tags[tag] = []
+      tags[tag].push(post)
+    }
+  }
+  return Object.entries(tags).flatMap(([tag, posts]) => paginate(posts, {
+    params: { tag },
+    props: { tag },
+    pageSize: PAGE_SIZE,
+  }))
+}
+
+
+type Props = {
+  page: Page<CollectionEntry<'post'>>
+  tag: string
+}
+
+
+const { page, tag } = Astro.props
+---
+
+<MainLayout>
+  <h1 class="text-3xl font-bold py-5 text-foreground/75 flex items-center">
+    <Tag className="inline-block mr-2" size={24} />
+    {tag}
+  </h1>
+  
+  <div class="pb-2 lg:pb-6">
+    <PostList posts={page.data} />
+    <Pagination page={page} />
+  </div>
+</MainLayout>
