@@ -1,0 +1,5 @@
+{
+  "framework": "astro",
+  "installCommand": "npm install",
+  "buildCommand": "yarn build:vercel"
+}

@@ -8,6 +8,7 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "build:vercel": "astro build --config astro.config.vercel.mjs",
     "astro": "astro",
     "format": "prettier --write **/*.astro ."
   },
