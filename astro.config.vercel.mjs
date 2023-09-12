@@ -8,8 +8,4 @@ export default defineConfig({
   compressHTML: true,
   adapter: vercel(),
   output: 'hybrid',
-  experimental: {
-    ...config.experimental,
-    hybridOutput: true
-  }
 })

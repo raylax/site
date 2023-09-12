@@ -1,0 +1,47 @@
+{
+	"version": 3,
+	"routes": [
+		{
+			"src": "^/_astro/(.*)$",
+			"headers": {
+				"cache-control": "public, max-age=31536000, immutable"
+			},
+			"continue": true
+		},
+		{
+			"handle": "filesystem"
+		},
+		{
+			"src": "^\\/_image$",
+			"dest": "_image.astro"
+		},
+		{
+			"src": "^\\/$",
+			"dest": "index.astro"
+		},
+		{
+			"src": "^\\/about\\/?$",
+			"dest": "about.astro"
+		},
+		{
+			"src": "^\\/posts\\/utils$",
+			"dest": "posts/utils.ts"
+		},
+		{
+			"src": "^\\/posts\\/tags\\/([^/]+?)(?:\\/(.*?))?\\/?$",
+			"dest": "posts/tags/[tag]/[...page].astro"
+		},
+		{
+			"src": "^\\/posts\\/([^/]+?)\\/?$",
+			"dest": "posts/[slug].astro"
+		},
+		{
+			"src": "^\\/posts(?:\\/(.*?))?\\/?$",
+			"dest": "posts/[...page].astro"
+		},
+		{
+			"src": "^\\/404\\/?$",
+			"dest": "404.astro"
+		}
+	]
+}
