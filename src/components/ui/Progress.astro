@@ -11,7 +11,7 @@ const { value, class: className, ...props } = Astro.props
 
 <div class={cn('relative h-4 w-full overflow-hidden rounded-full bg-foreground/5', className)} {...props}>
   <div
-    class="h-full w-full flex-1 bg-foreground/90 transition-all"
+    class="h-full w-full flex-1 bg-foreground/90 transition-all rounded-full"
     style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
   >
   </div>

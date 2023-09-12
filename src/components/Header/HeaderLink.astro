@@ -6,7 +6,7 @@ type Props = HTMLAttributes<'a'> & { href?: string }
 const { href, class: className, ...props } = Astro.props
 
 const { pathname } = Astro.url
-const isActive = href && (pathname === href) || new RegExp(`^${href}/(.+)?`).test(pathname)
+const isActive = (href && pathname === href) || new RegExp(`^${href}/(.+)?`).test(pathname)
 ---
 
 <a
