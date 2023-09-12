@@ -2,6 +2,7 @@
 import Card from '@/components/ui/Card.astro'
 import Progress from '@/components/ui/Progress.astro'
 import MainLayout from '@/layouts/MainLayout.astro'
+import { Github, Mail } from 'lucide-react'
 
 const since = new Date('2015-01-01')
 const years = new Date().getFullYear() - since.getFullYear()
@@ -58,6 +59,27 @@ const stacks = [
       <div>
         <p class="text-foreground/50">全栈开发 & 代码安全审计</p>
         <p class="text-foreground/90 py-2 font-bold text-6xl tracking-wide uppercase">RAYLAX</p>
+
+        <p class="text-sm flex gap-3">
+          <a
+            class="text-foreground/80 flex items-center gap-1 hover:underline"
+            target="_blank"
+            href="https://github.com/raylax"
+          >
+            <Github size={16} />
+             Github
+          </a>
+
+          <a
+            class="text-foreground/80 flex items-center gap-1 hover:underline"
+            target="_blank"
+            href="mailto:raylax@inurl.org"
+          >
+            <Mail size={16} />
+             raylax@inurl.org
+          </a>
+        </p>
+
         <p class="text-foreground/80 pt-4">
           {years}年全栈开发经验的专业开发者，擅长于前端和后端技术的设计、开发和部署。<br />
            拥有丰富的开发经验，熟悉多种编程语言和框架、数据库和缓存技术、开发工具和技术。<br />

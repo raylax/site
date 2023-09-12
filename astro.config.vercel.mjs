@@ -7,5 +7,5 @@ export default defineConfig({
   ...config,
   compressHTML: true,
   adapter: vercel(),
-  output: 'hybrid',
+  output: 'hybrid'
 })
