@@ -3,7 +3,7 @@ title: '第一篇文章'
 description: 'Lorem ipsum dolor sit amet'
 publishedDate: '2023/9/10'
 updatedDate: '2023/9/11'
-heroImage: '/blog-placeholder-3.jpg'
+heroImage: './assets/blog-placeholder-1.jpg'
 tags:
   - '标签1'
   - '标签2'

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets'
 import { type CollectionEntry } from 'astro:content'
 import FormattedDate from '@/components/FormattedDate.astro'
 import Card from '@/components/ui/Card.astro'
@@ -16,7 +17,7 @@ const { posts } = Astro.props
     posts.map(({ slug, body, data }) => (
       <Card class="transition-shadow hover:shadow-lg">
         <a href={`/posts/${slug}`}>
-          <img class="object-cover w-full" src={data.heroImage} alt="" />
+          <Image class="object-cover w-full" src={data.heroImage} alt="" />
           <div class="p-4">
             <div class="mb-2 flex gap-2">
               {data.tags.map((tag) => (
