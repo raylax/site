@@ -5,8 +5,6 @@ import remarkToc from 'remark-toc'
 import react from '@astrojs/react'
 import mdx from '@astrojs/mdx'
 
-import vercel from '@astrojs/vercel/serverless'
-
 // https://astro.build/config
 export default defineConfig({
   site: 'https://inurl.org',

@@ -4,7 +4,7 @@ import MainLayout from '@/layouts/MainLayout.astro'
 import PostList from '@/components/post/PostList.astro'
 import { PAGE_SIZE } from '@/consts'
 import { Tag } from 'lucide-react'
-import { getPosts } from '@/pages/posts/utils'
+import { getPosts } from '@/utils/post'
 import type { GetStaticPaths, Page } from 'astro'
 import Pagination from '@/components/post/Pagination.astro'
 
@@ -47,3 +47,4 @@ const { page, tag } = Astro.props
     <Pagination page={page} />
   </div>
 </MainLayout>
+ @/utils/utils@/utils/post

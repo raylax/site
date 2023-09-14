@@ -12,8 +12,8 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
 
 <MainLayout title={title} description={description}>
   <div class="pt-4 lg:pt-8">
-    <div class="max-w-5xl mx-auto px-2 lg:px-0">
-      <div>
+    <div class="xl:max-w-4xl 2xl:max-w-5xl xl:mx-auto px-2 md:px-0">
+      <div class="border-b">
         {
           tags && (
             <div class="mb-2 flex gap-2">
@@ -36,11 +36,8 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
             )
           }
         </div>
-        <hr />
       </div>
-      <article class="pt-4 prose md:prose-lg lg:prose-xl max-w-none">
-        <slot />
-      </article>
+      <slot />
     </div>
   </div>
 </MainLayout>

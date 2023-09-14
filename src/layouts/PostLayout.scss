@@ -19,6 +19,10 @@
   }
 }
 
+[id] {
+  @apply scroll-mt-16;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
