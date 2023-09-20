@@ -1,1 +1,1 @@
-import "@/scripts/navigation.mjs"
+import '@/scripts/navigation.mjs'
