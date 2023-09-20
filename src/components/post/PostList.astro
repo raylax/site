@@ -19,13 +19,13 @@ const { posts } = Astro.props
         <a href={`/posts/${slug}`}>
           <Image class="object-cover w-full" src={data.heroImage} alt="" />
           <div class="p-4">
-            <div class="mb-2 flex gap-2">
+            <div class="mb-2 flex gap-2" transition:name="post-tags">
               {data.tags.map((tag) => (
                 <PostTag>{tag}</PostTag>
               ))}
             </div>
-            <h1 class="text-3xl font-bold text-foreground/90 mb-2">{data.title}</h1>
-            <div class="flex justify-between items-center mb-3 text-foreground/90 text-sm">
+            <h1 class="text-3xl font-bold text-foreground/90 mb-2" transition:name="post-title">{data.title}</h1>
+            <div class="flex justify-between items-center mb-3 text-foreground/90 text-sm" transition:name="post-date">
               <div>
                 <FormattedDate date={data.publishedDate} /> 发布
               </div>
