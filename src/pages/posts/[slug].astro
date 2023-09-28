@@ -1,9 +1,8 @@
 ---
 import { type CollectionEntry } from 'astro:content'
 import PostLayout from '@/layouts/PostLayout.astro'
-import { getPosts } from '../../utils/post'
+import { getPosts } from '@/utils/post'
 import PostHeadings from '@/components/post/PostHeadings.astro'
-import Card from '@/components/ui/Card.astro'
 
 export async function getStaticPaths() {
   const posts = await getPosts()
@@ -18,13 +17,13 @@ const post = Astro.props
 const { Content, headings } = await post.render()
 ---
 
-<PostLayout {...post.data}>
+<PostLayout {...post.data} slug={post.slug}>
   <div class="relative">
     <div class="hidden xl:block sticky float-right -mr-52 w-52 top-16 py-2 pl-6">
       <p class="mb-2 text-base">内容列表</p>
       <PostHeadings headings={headings} />
     </div>
-    <article class="pt-4 prose md:prose-lg max-w-none">
+    <article class="pt-4 prose md:prose-lg max-w-none" transition:name={`post-content-${post.slug}`}>
       <Content />
     </article>
   </div>

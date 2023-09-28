@@ -5,9 +5,9 @@ import MainLayout from '@/layouts/MainLayout.astro'
 import PostTag from '@/components/post/PostTag.astro'
 import '@/layouts/PostLayout.scss'
 
-type Props = CollectionEntry<'post'>['data']
+type Props = CollectionEntry<'post'>['data'] & { slug: string }
 
-const { title, description, publishedDate, updatedDate, heroImage, tags } = Astro.props
+const { title, description, publishedDate, updatedDate, heroImage, tags, slug } = Astro.props
 ---
 
 <MainLayout title={title} description={description}>
@@ -16,7 +16,7 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
       <div class="border-b">
         {
           tags && (
-            <div class="mb-2 flex gap-2" transition:name="post-tags">
+            <div class="mb-2 flex gap-2" transition:name={`post-tags-${slug}`}>
               {tags.map((tag) => (
                 <PostTag>
                   <a href={`/posts/tags/${tag}`}>{tag}</a>
@@ -25,8 +25,11 @@ const { title, description, publishedDate, updatedDate, heroImage, tags } = Astr
             </div>
           )
         }
-        <h1 class="text-6xl font-bold text-foreground/90 mb-4" transition:name="post-title">{title}</h1>
-        <div class="flex justify-between items-center mb-2 text-foreground/90 text-sm" transition:name="post-date">
+        <h1 class="text-6xl font-bold text-foreground/90 mb-4" transition:name={`post-title-${slug}`}>{title}</h1>
+        <div
+          class="flex justify-between items-center mb-2 text-foreground/90 text-sm"
+          transition:name={`post-date-${slug}`}
+        >
           <div><FormattedDate date={publishedDate} /> 发布</div>
           {
             updatedDate && (

@@ -23,6 +23,31 @@
   @apply scroll-mt-16;
 }
 
+h1[id],
+h2[id],
+h3[id],
+h4[id],
+h5[id],
+h6[id] {
+  @apply mb-2;
+}
+
+code {
+  @apply mx-0.5 rounded bg-foreground/10 px-1.5 py-0.5;
+  &::before,
+  &::after {
+    @apply content-none #{!important};
+  }
+}
+
+p {
+  @apply mb-2 #{!important};
+}
+
+pre {
+  @apply my-1 #{!important};
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
